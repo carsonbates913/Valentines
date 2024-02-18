@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="valentine.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="holder">
+      <div>
+        <img class="gif-1" src="images/Valentines_Gif.gif" />
+        <img class="gif-2" src="images/Yes_Gif.gif" />
+        <img class="gif-3" src="images/No_Gif.gif" />
+      </div>
+      <div class="question">Will You Be My Valentine?</div>
+      <div class="Yes-Result">YAYYYYY!!!!</div>
+      <div class="responses">
+        <button
+          id="yes"
+          onclick="
+        saidYes()
+        "
+        >
+          Absolutely!
+        </button>
+        <button
+          id="no"
+          onclick="
+        changeButtonDimensions()
+        updateButton()
+        "
+        >
+          no
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let counter = 0;
+
+      const phrases = [
+        "are you sure?",
+        "really sure?",
+        "I think you misclicked",
+        "ok... very funny",
+        "please reconsider",
+        "we can work this out",
+        "change of heart?",
+        "start off slow?",
+        "everyone loves a slow burn",
+        "c'mon baby",
+        "shit",
+      ];
+
+      function updateButton() {
+        if (counter === 10) {
+          document.querySelector(".question").innerHTML =
+            "Can't say 'no' now, huh?";
+        }
+        if (counter === 11) {
+          saidNo();
+        }
+        document.getElementById("no").innerText = phrases[counter];
+        counter++;
+      }
+
+      function changeButtonDimensions() {
+        document.getElementById("yes").style.width =
+          parseInt(
+            window.getComputedStyle(document.getElementById("yes")).width
+          ) *
+            1.3 +
+          "px";
+        document.getElementById("yes").style.height =
+          parseInt(
+            window.getComputedStyle(document.getElementById("yes")).height
+          ) *
+            1.3 +
+          "px";
+        document.getElementById("yes").style.fontSize =
+          parseInt(
+            window.getComputedStyle(document.getElementById("yes")).fontSize
+          ) *
+            1.3 +
+          "px";
+      }
+
+      function saidYes() {
+        document.querySelector(".gif-1").style.display = "none";
+        document.querySelector(".gif-2").style.display = "block";
+        document.querySelector(".responses").style.display = "none";
+        document.querySelector(".question").style.display = "none";
+        document.querySelector(".Yes-Result").style.display = "block";
+      }
+      function saidNo() {
+        document.querySelector(".gif-1").style.display = "none";
+        document.querySelector(".gif-3").style.display = "block";
+        document.querySelector(".responses").style.display = "none";
+        document.querySelector(".question").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
